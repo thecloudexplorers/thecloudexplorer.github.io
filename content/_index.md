@@ -2,22 +2,8 @@
 title: "Welcome to The Cloud Explorer"
 layout: hextra-home
 ---
-  {{< hextra/feature-card
-    title="🔧 DevOps Well-Architected Guide"
-    subtitle="Comprehensive framework for implementing DevOps practices with cloud-native architectures, covering automation, continuous integration, and deployment strategies."
-  >}}
-  {{< hextra/feature-card
-    title="🏢 Cloud Center of Excellence"
-    subtitle="Establishing governance, standards, and best practices for enterprise cloud adoption. Creating a centralized hub for cloud expertise and knowledge sharing."
-  >}}
-  {{< hextra/feature-card
-    title="🛡️ Sovereign Cloud"
-    subtitle="Understanding data sovereignty, regulatory compliance, and national cloud strategies. Implementing cloud solutions that meet local data residency and security requirements."
-  >}}
-{{< /hextra/feature-grid >}}
-</div>
-</div>
-</div>ero-badge >}}
+
+{{< hextra/hero-badge >}}
   <div class="w-2 h-2 rounded-full bg-primary"></div>
   <span>Cloud Technologies</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
