@@ -128,6 +128,11 @@ The site automatically deploys to GitHub Pages when changes are pushed to the `m
 3. 🚀 Deploy to GitHub Pages
 4. ✅ Verify deployment
 
+**GitHub Pages Configuration:**
+- The site is configured to deploy from the root domain `https://thecloudexplorers.github.io/`
+- The GitHub Actions workflow uses a hardcoded baseURL to ensure proper URL generation
+- This prevents the site from being served from a subdirectory path
+
 ### Manual Deployment
 
 For manual deployment or testing:
