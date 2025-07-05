@@ -199,6 +199,18 @@ hugo mod get
 - Verify Hextra theme version compatibility
 - Check Hugo extended version is installed
 
+**GitHub Pages deployment issues:**
+- Ensure GitHub Pages is configured to deploy from GitHub Actions
+- Check that the workflow has proper permissions (pages: write, id-token: write)
+- Verify `.nojekyll` file is created during build to prevent Jekyll processing
+- Hugo version must be 0.134.0+ for Hextra theme compatibility
+
+**404 errors on GitHub Pages:**
+- Check GitHub Actions workflow logs for build/deployment failures
+- Verify `baseURL` is set correctly in `hugo.yaml`
+- Ensure `index.html` is generated in the public directory
+- Check that GitHub Pages source is set to "GitHub Actions" in repository settings
+
 ### Getting Help
 
 - 📖 **Hugo Documentation**: [gohugo.io/documentation](https://gohugo.io/documentation/)
