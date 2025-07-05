@@ -1,0 +1,50 @@
+# section information
+section:
+  name: Skills
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true 
+
+# Your Skills.
+# Give a summary of technologies that you know
+skills:
+- name: Amazon Web Services (AWS)
+  logo: /images/sections/skills/aws.png
+  summary: "Complete coverage of AWS services including EC2, S3, Lambda, CloudFormation, and best practices for cloud architecture and cost optimization."
+  url: "https://aws.amazon.com/"
+
+- name: Microsoft Azure
+  logo: /images/sections/skills/azure.png  
+  summary: "In-depth Azure tutorials including virtual machines, storage, networking, Azure DevOps, and architectural guidance for enterprise solutions."
+  url: "https://azure.microsoft.com/"
+
+- name: Google Cloud Platform
+  logo: /images/sections/skills/gcp.png
+  summary: "GCP services and implementation strategies including Compute Engine, Kubernetes Engine, BigQuery, and data analytics solutions."
+  url: "https://cloud.google.com/"
+
+- name: Kubernetes
+  logo: /images/sections/skills/kubernetes.png
+  summary: "Container orchestration, deployment strategies, scaling applications, and cloud-native architectures with Kubernetes."
+  url: "https://kubernetes.io/"
+
+- name: Docker
+  logo: /images/sections/skills/docker.png
+  summary: "Containerization technologies, Docker best practices, multi-stage builds, and container security."
+  url: "https://www.docker.com/"
+
+- name: Terraform
+  logo: /images/sections/skills/terraform.png
+  summary: "Infrastructure as Code, automation tools, CloudFormation, and deployment automation across multiple cloud providers."
+  url: "https://www.terraform.io/"
+
+- name: DevOps
+  logo: /images/sections/skills/devops.png
+  summary: "Comprehensive framework for implementing DevOps practices with cloud-native architectures, covering automation, CI/CD, and deployment strategies."
+
+- name: Security
+  logo: /images/sections/skills/security.png
+  summary: "Cloud security best practices, compliance frameworks, identity management, and implementing secure cloud architectures."

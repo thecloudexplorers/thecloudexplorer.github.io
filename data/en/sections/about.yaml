@@ -1,0 +1,42 @@
+# section information
+section:
+  name: About
+  id: about
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  template: sections/about.html
+
+# your designation
+designation: Cloud Technology Community
+# your company information
+company:
+  name: The Cloud Explorers
+  url: "https://thecloudexplorers.github.io"
+
+# your resume. this file path should be relative to you "static" directory
+# resume: "files/resume.pdf"
+
+# a summary about you
+summary: 'We are dedicated to helping organizations and individuals navigate the complex landscape of cloud technologies. Our mission is to provide expert insights, practical guidance, educational content, and industry updates. Our vision is to share ideas, have others pickup those ideas, reflect on them, improve them, and at their turn share the improved ideas. Resulting in a win-win for both the original idea owner and the improved idea owner as they both learn from each other!'
+
+# your social links
+# give as many as you want. use font-awesome for the icons.
+socialLinks:
+- name: Github
+  icon: "fab fa-github"
+  url: "https://github.com/thecloudexplorers"
+
+# your soft skills
+# give the percentage between 50 to 100
+softSkills:
+- name: Leadership
+  percentage: 95
+- name: Team Work
+  percentage: 90
+- name: Communication
+  percentage: 85
+- name: Problem Solving
+  percentage: 90
+- name: Knowledge Sharing
+  percentage: 95

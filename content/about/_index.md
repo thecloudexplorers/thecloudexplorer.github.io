@@ -1,12 +1,16 @@
 ---
-title: "About The Cloud Explorer"
+title: "About The Cloud Explorers"
 date: 2024-01-01
 weight: 1
+menu:
+  main:
+    name: "About"
+    weight: 2
 ---
 
-# About The Cloud Explorer
+# About The Cloud Explorers
 
-Welcome to The Cloud Explorer, your comprehensive resource for cloud computing knowledge, best practices, and the latest technological innovations.
+Welcome to The Cloud Explorers, your comprehensive resource for cloud computing knowledge, best practices, and the latest technological innovations.
 
 ## Our Mission
 
@@ -54,4 +58,4 @@ Join our community of cloud enthusiasts and practitioners. Whether you're just s
 
 ---
 
-*The Cloud Explorer is committed to providing accurate, up-to-date information to help you succeed in your cloud initiatives.*
+*The Cloud Explorers is committed to providing accurate, up-to-date information to help you succeed in your cloud initiatives.*

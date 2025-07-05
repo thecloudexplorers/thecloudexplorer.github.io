@@ -1,0 +1,22 @@
+# Copyright Notice
+copyright: © 2025 The Cloud Explorers.
+
+# A disclaimer notice for the footer. Make sure you have set "footer.disclaimer.enable: true" in your config file.
+disclaimer: "This website is for educational and informational purposes. The content reflects our community's collective knowledge and experiences in cloud technologies."
+
+# Meta description for your site.  This will help the search engines to find your site.
+description: "Exploring cloud technologies, best practices, and innovations - A community for IT experts and enthusiasts specializing in cloud computing, DevOps, and emerging technologies."
+
+# specify the list of custom menus that you want to show in the top navbar.
+# they will be separated by a divider from the main menus.
+customMenus:
+  - name: "Notes"
+    url: "/posts"
+
+# Specify open graph fields for your site. These will be used when someone share your site via social media.
+openGraph:
+  title: The Cloud Explorers
+  type: website
+  description: Exploring cloud technologies, best practices, and innovations
+  image: images/site/background.jpg
+  url: https://thecloudexplorers.github.io
