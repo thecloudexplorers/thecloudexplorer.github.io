@@ -1,0 +1,62 @@
+# section information
+section:
+  name: Experience
+  id: experiences
+  enable: true
+  weight: 4
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your experiences
+experiences:
+- company:
+    name: The Cloud Explorers Community
+    url: "https://thecloudexplorers.github.io"
+    location: Global
+    # company overview
+    overview: A community for IT experts and enthusiasts specializing in cloud technologies, DevOps, and emerging technologies.
+  positions:
+  - designation: Cloud Technology Advocates
+    start: Jan 2024
+    # don't provide end date if you are currently working there. It will be replaced by "Present"
+    # end: Dec 2020
+    # give some points about what was your responsibilities at the company.
+    responsibilities:
+    - Share knowledge and experience through personal blogs and community contributions
+    - Provide practical guidance on cloud architecture, security, and cost optimization
+    - Create comprehensive tutorials and guides for all skill levels
+    - Stay updated with latest trends and developments in cloud computing
+    - Foster collaboration and knowledge sharing within the community
+
+- company:
+    name: Enterprise Cloud Initiatives
+    url: "#"
+    location: Various Organizations
+    overview: Collective experience from community members working across different enterprises implementing cloud solutions.
+  positions:
+  - designation: Cloud Architects & Engineers
+    start: 2020
+    end: Present
+    responsibilities:
+    - Design and implement scalable cloud architectures for enterprise applications
+    - Lead cloud migration projects and modernization initiatives
+    - Establish cloud governance, security, and compliance frameworks
+    - Optimize cloud costs and implement FinOps practices
+    - Mentor teams on cloud-native development and DevOps practices
+
+- company:
+    name: Technology Innovation
+    url: "#" 
+    location: Global
+    overview: Research and exploration of emerging cloud technologies and industry trends.
+  positions:
+  - designation: Technology Researchers
+    start: 2019
+    end: Present
+    responsibilities:
+    - Research emerging cloud technologies and service offerings
+    - Evaluate new tools and platforms for enterprise adoption
+    - Create proof-of-concepts and technical demonstrations
+    - Analyze industry trends and provide strategic recommendations
+    - Contribute to open-source cloud and DevOps projects

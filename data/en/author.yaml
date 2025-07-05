@@ -1,0 +1,17 @@
+# some information about you
+name: "The Cloud Explorers"
+nickname: "Cloud Explorers"
+# greeting message before your name. it will default to "Hi! I am" if not provided
+greeting: "Welcome! We are"
+# your designation
+designation: "Cloud Technology Community"
+# your location
+location: "Global"
+# your resume. this file path should be relative to you "static" directory
+# Uncomment the following line when resume is available
+# resume: "files/resume.pdf"
+
+# a summary of your profile
+summary: 
+  - "Our goal is to create a community for IT experts and enthusiasts who specialize in the relevant topics on the always evolving IT area."
+  - "Our mission is to have a place to share knowledge, learn from each other and meet and mingle!"

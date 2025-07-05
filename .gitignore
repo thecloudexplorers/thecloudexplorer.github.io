@@ -41,3 +41,7 @@ Thumbs.db
 
 # Hugo server lock
 hugo.deb
+
+# Hugo binary
+hugo
+hugo_extended_*
