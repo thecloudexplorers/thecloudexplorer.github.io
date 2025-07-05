@@ -1,8 +1,8 @@
 # Hugo configuration file
-baseURL: 'https://thecloudexplorers.github.io/thecloudexplorer.github.io/'
-languageCode: 'en-us'
-title: 'The Cloud Explorer'
-description: 'Exploring cloud technologies, best practices, and innovations'
+baseURL: "https://thecloudexplorers.github.io/"
+languageCode: "en-us"
+title: "The Cloud Explorers"
+description: "Exploring cloud technologies, best practices, and innovations"
 
 # Hugo module configuration
 module:
@@ -32,7 +32,7 @@ menu:
 # Site parameters
 params:
   description: "Exploring cloud technologies, best practices, and innovations"
-  
+
   # Theme configuration
   theme:
     # Use dark mode theme by default
