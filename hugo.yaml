@@ -1,0 +1,59 @@
+# Hugo configuration file
+baseURL: 'https://thecloudexplorers.github.io/'
+languageCode: 'en-us'
+title: 'The Cloud Explorer'
+description: 'Exploring cloud technologies, best practices, and innovations'
+
+# Hugo module configuration
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+# Menu configuration
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: About
+      url: /about/
+      weight: 2
+    - name: Blog
+      url: /blog/
+      weight: 3
+
+# Site parameters
+params:
+  description: "Exploring cloud technologies, best practices, and innovations"
+  
+  # Theme configuration
+  theme:
+    # Use dark mode theme by default
+    default: system
+    displayToggle: true
+
+  navbar:
+    displayTitle: true
+    displayLogo: false
+
+  footer:
+    displayCopyright: true
+    displayPoweredBy: true
+
+  editPage:
+    enable: false
+
+  search:
+    enable: true
+    type: flexsearch
+
+  # GitHub configuration
+  gitHub:
+    repo: https://github.com/thecloudexplorers/thecloudexplorer.github.io
