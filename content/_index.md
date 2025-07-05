@@ -2,8 +2,22 @@
 title: "Welcome to The Cloud Explorer"
 layout: hextra-home
 ---
-
-{{< hextra/hero-badge >}}
+  {{< hextra/feature-card
+    title="🔧 DevOps Well-Architected Guide"
+    subtitle="Comprehensive framework for implementing DevOps practices with cloud-native architectures, covering automation, continuous integration, and deployment strategies."
+  >}}
+  {{< hextra/feature-card
+    title="🏢 Cloud Center of Excellence"
+    subtitle="Establishing governance, standards, and best practices for enterprise cloud adoption. Creating a centralized hub for cloud expertise and knowledge sharing."
+  >}}
+  {{< hextra/feature-card
+    title="🛡️ Sovereign Cloud"
+    subtitle="Understanding data sovereignty, regulatory compliance, and national cloud strategies. Implementing cloud solutions that meet local data residency and security requirements."
+  >}}
+{{< /hextra/feature-grid >}}
+</div>
+</div>
+</div>ero-badge >}}
   <div class="w-2 h-2 rounded-full bg-primary"></div>
   <span>Cloud Technologies</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
@@ -53,13 +67,15 @@ layout: hextra-home
 {{< /hextra/feature-grid >}}
 </div>
 
-<div class="mt-12">
+<div class="bg-gray-50 py-16 mt-16">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center">
 {{< hextra/hero-headline >}}
   Guidelines
 {{< /hextra/hero-headline >}}
 </div>
 
-<div class="mb-6">
+<div class="mb-6 text-center">
 {{< hextra/hero-subtitle >}}
   Essential principles and best practices for cloud exploration and technology adoption.
 {{< /hextra/hero-subtitle >}}
