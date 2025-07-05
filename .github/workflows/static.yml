@@ -54,6 +54,9 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
         
+      - name: Initialize Hugo modules
+        run: hugo mod get
+        
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
@@ -67,6 +70,13 @@ jobs:
           
       - name: Add .nojekyll file
         run: touch ./public/.nojekyll
+        
+      - name: List generated files (for debugging)
+        run: |
+          echo "Generated files in public/:"
+          ls -la ./public/
+          echo "Checking index.html exists:"
+          test -f ./public/index.html && echo "✅ index.html found" || echo "❌ index.html missing"
             
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
