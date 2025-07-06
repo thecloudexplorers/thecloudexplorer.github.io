@@ -1,0 +1,31 @@
+# section information
+section:
+  name: Achievements
+  id: achievements
+  enable: true
+  weight: 5
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your achievements summary
+achievements:
+- title: Cloud Community Building
+  image: /images/sections/achievements/community.png
+  summary: Successfully established a thriving community of cloud technology experts and enthusiasts, fostering knowledge sharing and collaboration across the industry.
+
+- title: Knowledge Sharing Excellence
+  image: /images/sections/achievements/knowledge.png
+  summary: Created comprehensive educational content, tutorials, and best practice guides that have helped numerous organizations in their cloud adoption journey.
+
+- title: Industry Recognition
+  image: /images/sections/achievements/recognition.png
+  summary: Gained recognition in the cloud community for providing practical, real-world insights and solutions to common cloud challenges and implementation strategies.
+
+- title: Multi-Cloud Expertise
+  image: /images/sections/achievements/multicloud.png
+  summary: Developed deep expertise across multiple cloud platforms (AWS, Azure, GCP) and established frameworks for multi-cloud and hybrid cloud strategies.
+
+- title: DevOps Innovation
+  image: /images/sections/achievements/devops.png
+  summary: Pioneered DevOps well-architected frameworks and automation practices that enable organizations to implement cloud-native development and deployment strategies effectively.
