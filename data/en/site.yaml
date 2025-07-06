@@ -10,7 +10,7 @@ description: "Exploring cloud technologies, best practices, and innovations - A 
 # specify the list of custom menus that you want to show in the top navbar.
 # they will be separated by a divider from the main menus.
 customMenus:
-  - name: "Notes"
+  - name: "Blog"
     url: "/posts"
 
 # Specify open graph fields for your site. These will be used when someone share your site via social media.

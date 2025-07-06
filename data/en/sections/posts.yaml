@@ -1,0 +1,22 @@
+# section information
+section:
+  name: Recent Posts
+  id: recent-posts
+  enable: true
+  weight: 6
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# your recent posts
+# This will show recent blog posts on the main page
+recentPosts:
+  enable: true
+  # Number of posts to show on the main page
+  showPosts: 6
+  # Enable tags for posts
+  enableTags: true
+  # Show summary of posts
+  showSummary: true
+  # Show read time
+  showReadTime: true
