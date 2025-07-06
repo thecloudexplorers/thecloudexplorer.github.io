@@ -98,7 +98,7 @@
     <div class="collapse navbar-collapse dynamic-navbar" id="top-nav-items">
       <ul class="nav navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{{ if .IsHome }}#home{{else}}{{ site.BaseURL | relLangURL }}#home{{end}}">{{ i18n "home" }}</a>
+          <a class="nav-link{{ if .IsHome }} active{{ end }}" href="{{ if .IsHome }}#home{{else}}{{ site.BaseURL | relLangURL }}#home{{end}}">{{ i18n "home" }}</a>
         </li>
         {{ if $sections }}
           {{ $sectionCount := 1 }}
@@ -106,8 +106,15 @@
             {{ if and (.section.enable) (.section.showOnNavbar)}}
               {{ $sectionCount  = add $sectionCount 1}}
               {{ if le $sectionCount $maxVisibleSections }}
+                {{ $sectionUrl := partial "helpers/get-section-url.html" . }}
+                {{ $isActive := false }}
+                {{ if and (not $.IsHome) (eq $.RelPermalink $sectionUrl) }}
+                  {{ $isActive = true }}
+                {{ else if and (not $.IsHome) (hasPrefix $.RelPermalink $sectionUrl) }}
+                  {{ $isActive = true }}
+                {{ end }}
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ partial "helpers/get-section-url.html" . }}">{{ .section.name }}</a>
+                  <a class="nav-link{{ if $isActive }} active{{ end }}" href="{{ $sectionUrl }}">{{ .section.name }}</a>
                 </li>
               {{ end }}
             {{ end }}
@@ -134,13 +141,23 @@
           <div id="top-navbar-divider"></div>
         {{ end }}
         {{ if $blogEnabled }}
+          {{ $blogUrl := path.Join (site.BaseURL | relLangURL) "posts" }}
+          {{ $isBlogActive := false }}
+          {{ if and (not .IsHome) (or (hasPrefix .RelPermalink $blogUrl) (eq .Section "posts") (eq .Section "blog")) }}
+            {{ $isBlogActive = true }}
+          {{ end }}
           <li class="nav-item">
-            <a class="nav-link" id="blog-link" href="{{ path.Join (site.BaseURL | relLangURL) "posts" }}">{{ $blogTitle }}</a>
+            <a class="nav-link{{ if $isBlogActive }} active{{ end }}" id="blog-link" href="{{ $blogUrl }}">{{ $blogTitle }}</a>
           </li>
         {{ end }}
         {{ if $notesEnabled }}
+          {{ $notesUrl := path.Join (site.BaseURL | relLangURL) "notes" }}
+          {{ $isNotesActive := false }}
+          {{ if and (not .IsHome) (or (hasPrefix .RelPermalink $notesUrl) (eq .Section "notes")) }}
+            {{ $isNotesActive = true }}
+          {{ end }}
           <li class="nav-item">
-            <a class="nav-link" id="note-link" href="{{ path.Join (site.BaseURL | relLangURL) "notes" }}">{{ $notesTitle }}</a>
+            <a class="nav-link{{ if $isNotesActive }} active{{ end }}" id="note-link" href="{{ $notesUrl }}">{{ $notesTitle }}</a>
           </li>
         {{ end }}
         {{ range $customMenus }}

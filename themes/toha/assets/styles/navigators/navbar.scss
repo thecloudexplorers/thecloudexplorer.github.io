@@ -20,13 +20,13 @@
   z-index: 99999;
   margin: 0px;
   padding-top: 0.4rem;
-  color: get-light-color('heading-color');
+  color: #1e293b; /* Custom: Dark text like Guidelines */
   text-align: center;
-  background-color: get-light-color('bg-primary');
+  background-color: #e2e8f0; /* Custom: slate 200 to match Guidelines section */
   @include transition();
 
   .navbar-brand {
-    color: get-light-color('heading-color');
+    color: #1e293b; /* Custom: Dark text like Guidelines */
     text-decoration: none !important;
     font-weight: 600;
     img {
@@ -43,24 +43,30 @@
   .sidebar-icon {
     width: 32px;
     height: 32px;
-    filter: invert(0.5);
+    filter: invert(0.12) sepia(0.35) saturate(3.5) hue-rotate(180deg) brightness(0.9); /* Custom: Match #1e293b */
   }
 
   li {
     a {
-      color: get-light-color('heading-color');
+      color: #1e293b; /* Custom: Dark text like Guidelines */
       text-decoration: none !important;
       font-weight: 500;
       @include transition();
       border-bottom: 2px solid transparent;
       &:hover {
-        @include nav-item-hover-effect();
+        color: #1e293b !important; /* Custom: Keep same dark color on hover */
+        border-bottom: 2px solid #1e293b !important; /* Custom: Dark underline */
+        background: rgba(30, 41, 59, 0.1); /* Custom: Subtle dark background */
+        @include transition();
       }
     }
   }
 
   .navbar-nav .active {
-    @include nav-item-hover-effect();
+    color: #1e293b !important; /* Custom: Use same dark color as text, not accent */
+    border-bottom: 2px solid #1e293b !important; /* Custom: Dark underline to match text */
+    background: rgba(30, 41, 59, 0.1); /* Custom: Subtle dark background */
+    @include transition();
   }
 
   #top-navbar-divider {
@@ -120,18 +126,18 @@
   }
 
   &.transparent-navbar {
-    background-color: transparent !important;
+    background-color: #e2e8f0 !important; /* Custom: Keep same gray even when transparent */
     .navbar-brand {
-      color: get-light-color('inverse-text-color');
+      color: #1e293b !important; /* Custom: Use dark text like Guidelines */
       font-weight: 600;
     }
     li {
       a {
-        color: get-light-color('inverse-text-color');
+        color: #1e293b !important; /* Custom: Use dark text like Guidelines */
       }
     }
     .feather-menu {
-      stroke: get-light-color('inverse-text-color');
+      stroke: #1e293b; /* Custom: Use same color as text */
     }
   }
 
@@ -143,6 +149,7 @@
       display: block !important;
       margin-left: auto !important;
       margin-right: auto !important;
+      filter: invert(0.12) sepia(0.35) saturate(3.5) hue-rotate(180deg) brightness(0.9); /* Custom: Match #1e293b */
     }
   }
 
@@ -202,7 +209,7 @@
 .feather-menu {
   width: 1.5rem;
   height: 1.5rem;
-  stroke: get-light-color('text-color');
+  stroke: #1e293b; /* Custom: Use same color as text */
 }
 
 html[data-theme='dark'] {
