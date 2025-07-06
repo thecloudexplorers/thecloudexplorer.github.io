@@ -1,0 +1,11 @@
+posts:
+  - title: "Sample External Post"
+    date: "2024-01-15T00:00:00Z"
+    summary: "This is a sample external post to demonstrate the aggregation functionality."
+    url: "https://wesleycamargo.github.io/sample-post"
+    source:
+      repository: "wesleycamargo/wesleycamargo.github.io"
+      author: "wesleycamargo"
+      originalUrl: "https://github.com/wesleycamargo/wesleycamargo.github.io/blob/main/content/posts/sample.md"
+    tags: ["sample", "demo"]
+    external: true

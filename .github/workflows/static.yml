@@ -54,6 +54,13 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+      - name: Aggregate external blog posts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🔄 Aggregating external blog posts..."
+          npm run aggregate-posts || echo "⚠️ Post aggregation failed, continuing with build"
+
       - name: Initialize Hugo modules
         run: hugo mod get
 
