@@ -28,13 +28,14 @@
 {{ end }}
 
 {{ define "content" }}
-<!-- Custom posts template with external posts support -->
 <section class="content-section" id="content-section">
   <div class="content container-fluid" id="content">
     <div class="container-fluid post-card-holder" id="post-card-holder">
-      <!-- Render regular posts -->
-      {{ $localPosts := where .RegularPagesRecursive "Layout" "!=" "search" }}
-      {{ range $localPosts }}
+      <!-- Render local blog posts -->
+      {{ $posts := where .RegularPagesRecursive "Layout" "!=" "search" }}
+      {{ $numShow := site.Params.features.pagination.maxPostsPerPage | default 12}}
+      {{ $paginator := .Paginate $posts $numShow }}
+      {{ range $paginator.Pages }}
         {{ if .Layout }}
           {{/* ignore the search.md file*/}}
         {{ else }}
@@ -42,21 +43,17 @@
         {{ end }}
       {{ end }}
       
-      <!-- External posts section starts here -->
-      {{ $externalData := index site.Data.en "external_posts" }}
-      {{ if $externalData }}
-        {{ if $externalData.posts }}
-          <!-- Found external posts data: {{ len $externalData.posts }} posts -->
-          {{ range $externalData.posts }}
+      <!-- Render external blog posts -->
+      {{ with site.Data.en.external_posts }}
+        {{ if .posts }}
+          {{ range .posts }}
             {{ partial "cards/external-post.html" . }}
           {{ end }}
-        {{ else }}
-          <!-- External posts data exists but no posts found -->
         {{ end }}
-      {{ else }}
-        <!-- No external_posts data found in site.Data.en -->
       {{ end }}
-      <!-- External posts section ends here -->
+    </div>
+    <div class="paginator">
+      {{ partial "pagination.html" . }}
     </div>
   </div>
 </section>
