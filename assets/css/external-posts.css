@@ -1,0 +1,60 @@
+/* External post card styling */
+.external-post-card {
+  position: relative;
+}
+
+.external-post-card .card {
+  border-left: 4px solid #007bff;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+}
+
+.external-post-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 123, 255, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.external-post-badge i {
+  margin-right: 4px;
+}
+
+.external-post-source {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #dee2e6;
+}
+
+.external-post-source i {
+  margin-right: 4px;
+}
+
+.tag-badge {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-size: 0.7rem;
+}
+
+.tags {
+  margin-top: 8px;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .external-post-card .card {
+  background: linear-gradient(145deg, #2d3748, #1a202c);
+  border-left-color: #4299e1;
+}
+
+[data-theme="dark"] .external-post-badge {
+  background: rgba(66, 153, 225, 0.9);
+}
+
+[data-theme="dark"] .external-post-source {
+  border-top-color: #4a5568;
+}

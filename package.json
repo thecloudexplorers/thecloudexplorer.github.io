@@ -14,6 +14,7 @@
     "imagesloaded": "^5.0.0",
     "include-media": "^1.4.10",
     "ityped": "^1.0.3",
+    "js-yaml": "^4.1.0",
     "katex": "^0.16.11",
     "mark.js": "^8.11.1",
     "mermaid": "^11.6.0",
@@ -21,5 +22,8 @@
     "popper.js": "^1.16.1",
     "postcss": "^8.4.41",
     "postcss-cli": "^11.0.0"
+  },
+  "scripts": {
+    "aggregate-posts": "node scripts/aggregate-posts.js"
   }
 }
