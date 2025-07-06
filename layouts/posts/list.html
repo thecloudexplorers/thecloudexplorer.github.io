@@ -1,0 +1,63 @@
+{{ define "navbar" }}
+    {{ partial "navigators/navbar.html" . }}
+{{ end }}
+
+{{ define "sidebar" }}
+  {{ $homePage:="#" }}
+  {{ if hugo.IsMultilingual }}
+    {{ $homePage = (path.Join (cond ( eq .Language.Lang "en") "" .Language.Lang) .Type) }}
+  {{ end }}
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="{{ "search" | relLangURL }}">
+          <input type="text" name="keyword" value="" placeholder="{{ i18n "search" }}" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="{{ .Type | relLangURL }}" data-filter="all">{{ i18n .Type }}</a></li>
+            <div class="subtree">
+                {{ partial "navigators/sidebar.html" (dict "menuName" "sidebar" "menuItems" site.Menus.sidebar "ctx" .) }}
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "content" }}
+<!-- Custom posts template with external posts support -->
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      <!-- Render regular posts -->
+      {{ $localPosts := where .RegularPagesRecursive "Layout" "!=" "search" }}
+      {{ range $localPosts }}
+        {{ if .Layout }}
+          {{/* ignore the search.md file*/}}
+        {{ else }}
+          {{ partial "cards/post.html" . }}
+        {{ end }}
+      {{ end }}
+      
+      <!-- External posts section starts here -->
+      {{ $externalData := index site.Data.en "external_posts" }}
+      {{ if $externalData }}
+        {{ if $externalData.posts }}
+          <!-- Found external posts data: {{ len $externalData.posts }} posts -->
+          {{ range $externalData.posts }}
+            {{ partial "cards/external-post.html" . }}
+          {{ end }}
+        {{ else }}
+          <!-- External posts data exists but no posts found -->
+        {{ end }}
+      {{ else }}
+        <!-- No external_posts data found in site.Data.en -->
+      {{ end }}
+      <!-- External posts section ends here -->
+    </div>
+  </div>
+</section>
+{{ end }}

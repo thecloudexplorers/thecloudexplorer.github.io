@@ -22,11 +22,22 @@ const TARGET_REPOS = [
   {
     owner: 'wesleycamargo',
     repo: 'wesleycamargo.github.io',
-    postPath: 'content/posts',  // Typical Hugo structure
+    postPaths: ['content/posts', 'content/blog', '_posts', 'posts'],  // Try multiple common paths
     branch: 'main'
   },
-  // Add other repositories as needed
-  // Note: We'll need to discover the exact repo names and structures
+  {
+    owner: 'devjev', 
+    repo: 'devjev.nl',
+    postPaths: ['content/posts', 'content/blog', '_posts', 'posts'],
+    branch: 'main'
+  },
+  {
+    owner: 'bearman-nl',
+    repo: 'bearman.nl', 
+    postPaths: ['content/posts', 'content/blog', '_posts', 'posts'],
+    branch: 'main'
+  }
+  // Note: Actual repo names may need to be discovered and updated
 ];
 
 /**
@@ -148,12 +159,59 @@ function extractSummary(content, maxLength = 200) {
 }
 
 /**
+ * Try to find posts in a repository by checking multiple common paths
+ */
+async function findPostsPath(owner, repo, branch = 'main') {
+  const commonPaths = ['content/posts', 'content/blog', '_posts', 'posts', 'blog'];
+  
+  for (const path of commonPaths) {
+    try {
+      const files = await getRepoFiles(owner, repo, path, branch);
+      if (files.length > 0) {
+        console.log(`Found posts path: ${path} (${files.length} items)`);
+        return path;
+      }
+    } catch (error) {
+      // Continue to next path
+      continue;
+    }
+  }
+  
+  console.warn(`No posts found in common paths for ${owner}/${repo}`);
+  return null;
+}
+
+/**
  * Process posts from a single repository
  */
 async function processRepository(repoConfig) {
   console.log(`Processing repository: ${repoConfig.owner}/${repoConfig.repo}`);
   
-  const files = await getRepoFiles(repoConfig.owner, repoConfig.repo, repoConfig.postPath, repoConfig.branch);
+  // Try to find the posts directory
+  let postsPath = null;
+  if (repoConfig.postPaths) {
+    for (const path of repoConfig.postPaths) {
+      try {
+        const files = await getRepoFiles(repoConfig.owner, repoConfig.repo, path, repoConfig.branch);
+        if (files.length > 0) {
+          postsPath = path;
+          console.log(`Found posts in: ${path}`);
+          break;
+        }
+      } catch (error) {
+        continue;
+      }
+    }
+  } else {
+    postsPath = await findPostsPath(repoConfig.owner, repoConfig.repo, repoConfig.branch);
+  }
+  
+  if (!postsPath) {
+    console.warn(`No posts found for ${repoConfig.owner}/${repoConfig.repo}`);
+    return [];
+  }
+  
+  const files = await getRepoFiles(repoConfig.owner, repoConfig.repo, postsPath, repoConfig.branch);
   const posts = [];
   
   for (const file of files) {
@@ -168,18 +226,32 @@ async function processRepository(repoConfig) {
       
       const { frontMatter, body } = parsed;
       
+      // Skip drafts
+      if (frontMatter.draft === true) {
+        console.log(`Skipping draft: ${file.name}`);
+        continue;
+      }
+      
+      // Generate post URL based on repository structure
+      let postUrl = `https://${repoConfig.owner}.github.io/`;
+      if (postsPath.includes('posts') || postsPath.includes('blog')) {
+        postUrl += `${postsPath.split('/').pop()}/${file.name.replace('.md', '')}/`;
+      } else {
+        postUrl += file.name.replace('.md', '/');
+      }
+      
       // Create external post object
       const post = {
         title: frontMatter.title || file.name.replace('.md', ''),
-        date: frontMatter.date || frontMatter.publishDate || new Date().toISOString(),
-        summary: frontMatter.summary || frontMatter.description || extractSummary(body),
-        url: `https://${repoConfig.owner}.github.io/${file.name.replace('.md', '')}`,
+        date: frontMatter.date || frontMatter.publishDate || frontMatter.created || new Date().toISOString(),
+        summary: frontMatter.summary || frontMatter.description || frontMatter.excerpt || extractSummary(body),
+        url: postUrl,
         source: {
           repository: `${repoConfig.owner}/${repoConfig.repo}`,
           author: repoConfig.owner,
           originalUrl: `https://github.com/${repoConfig.owner}/${repoConfig.repo}/blob/${repoConfig.branch}/${file.path}`
         },
-        tags: frontMatter.tags || [],
+        tags: frontMatter.tags || frontMatter.categories || [],
         external: true
       };
       
