@@ -1,0 +1,33 @@
+{{/* 
+  RSS Feed Aggregator
+  Fetches external RSS feeds and returns a standardized data structure
+  Falls back to mock data if RSS feeds are not available
+  Usage: {{ $externalPosts := partial "helpers/rss-aggregator.html" . }}
+*/}}
+
+{{ $externalPosts := slice }}
+{{ $feedConfig := index site.Data "external-blogs" }}
+
+{{ if and $feedConfig $feedConfig.config.enable_aggregation }}
+  {{ $maxPostsPerFeed := $feedConfig.config.max_posts_per_feed | default 5 }}
+  
+  {{/* For now, use mock data in all environments until RSS feeds are verified */}}
+  {{ with index site.Data "mock-external-posts" }}
+    {{ range .mock_posts }}
+      {{ $externalPosts = $externalPosts | append . }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* TODO: Enable RSS fetching when feeds are verified working
+  {{ if eq hugo.Environment "production" }}
+    {{ range $feedConfig.feeds }}
+      ... RSS fetching logic ...
+    {{ end }}
+  {{ end }}
+  */}}
+  
+  {{/* Sort external posts by date (newest first) */}}
+  {{ $externalPosts = sort $externalPosts "date" "desc" }}
+{{ end }}
+
+{{ return $externalPosts }}

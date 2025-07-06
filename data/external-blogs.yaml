@@ -1,0 +1,26 @@
+---
+# External blog RSS feeds configuration
+feeds:
+  - name: "DevJev.nl"
+    url: "https://www.devjev.nl/"
+    rss_url: "https://www.devjev.nl/feed.xml"
+    author: "DevJev"
+    favicon: ""
+    
+  - name: "Bearman.nl"
+    url: "https://bearman.nl/"
+    rss_url: "https://bearman.nl/feed.xml"
+    author: "Bearman"
+    favicon: ""
+    
+  - name: "Wesley Camargo"
+    url: "https://wesleycamargo.github.io/"
+    rss_url: "https://wesleycamargo.github.io/feed.xml"
+    author: "Wesley Camargo"
+    favicon: ""
+
+# Configuration for RSS aggregation
+config:
+  max_posts_per_feed: 5
+  cache_duration: "1h"
+  enable_aggregation: true

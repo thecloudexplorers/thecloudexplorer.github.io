@@ -1,0 +1,96 @@
+{{ define "navbar" }}
+    {{ partial "navigators/navbar.html" . }}
+{{ end }}
+
+{{ define "sidebar" }}
+  {{ $homePage:="#" }}
+  {{ if hugo.IsMultilingual }}
+    {{ $homePage = (path.Join (cond ( eq .Language.Lang "en") "" .Language.Lang) .Type) }}
+  {{ end }}
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="{{ "search" | relLangURL }}">
+          <input type="text" name="keyword" value="" placeholder="{{ i18n "search" }}" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="{{ .Type | relLangURL }}" data-filter="all">{{ i18n .Type }}</a></li>
+            <div class="subtree">
+                {{ partial "navigators/sidebar.html" (dict "menuName" "sidebar" "menuItems" site.Menus.sidebar "ctx" .) }}
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "content" }}
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      {{/* Get local posts */}}
+      {{ $localPosts := where .RegularPagesRecursive "Layout" "!=" "search" }}
+      
+      {{/* Get external posts */}}
+      {{ $externalPosts := partial "helpers/rss-aggregator.html" . }}
+      
+      {{/* Combine and sort posts by date */}}
+      {{ $allPosts := slice }}
+      
+      {{/* Add local posts to collection */}}
+      {{ range $localPosts }}
+        {{ $post := dict
+          "title" .Title
+          "url" .RelPermalink
+          "date" .Date
+          "summary" .Summary
+          "external" false
+          "page" .
+        }}
+        {{ $allPosts = $allPosts | append $post }}
+      {{ end }}
+      
+      {{/* Add external posts to collection */}}
+      {{ range $externalPosts }}
+        {{ $post := dict
+          "title" .title
+          "url" .url
+          "date" (.date | time.AsTime)
+          "summary" .description
+          "external" true
+          "externalData" .
+        }}
+        {{ $allPosts = $allPosts | append $post }}
+      {{ end }}
+      
+      {{/* Sort all posts by date */}}
+      {{ $sortedPosts := sort $allPosts "date" "desc" }}
+      
+      {{/* Simple pagination - use Hugo's built-in pagination with local posts only for now */}}
+      {{ $numShow := site.Params.features.pagination.maxPostsPerPage | default 12}}
+      {{ $paginator := .Paginate $localPosts $numShow }}
+      
+      {{/* Display external posts first (latest ones) */}}
+      {{ $externalPostsToShow := first $numShow $externalPosts }}
+      {{ range $externalPostsToShow }}
+        {{ partial "cards/external-post.html" . }}
+      {{ end }}
+      
+      {{/* Then display local posts */}}
+      {{ range $paginator.Pages }}
+        {{ if .Layout }}
+          {{/* ignore the search.md file*/}}
+        {{ else }}
+          {{ partial "cards/post.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
+    <div class="paginator">
+      {{ partial "pagination.html" . }}
+    </div>
+  </div>
+</section>
+{{ end }}

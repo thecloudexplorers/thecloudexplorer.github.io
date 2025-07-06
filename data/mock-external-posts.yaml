@@ -1,0 +1,62 @@
+# Mock external blog posts for testing
+# This file simulates RSS feed data when actual feeds are not available
+mock_posts:
+  - title: "Advanced Cloud Security Patterns"
+    url: "https://www.devjev.nl/posts/cloud-security-patterns"
+    description: "Exploring advanced security patterns for cloud-native applications, including zero-trust architecture and secure service mesh implementations."
+    date: "2024-01-15T10:30:00Z"
+    author: "DevJev"
+    source: "DevJev.nl"
+    source_url: "https://www.devjev.nl/"
+    image: "https://via.placeholder.com/400x200/0066cc/ffffff?text=Cloud+Security"
+    external: true
+
+  - title: "Kubernetes Networking Deep Dive"
+    url: "https://bearman.nl/posts/kubernetes-networking"
+    description: "A comprehensive guide to understanding Kubernetes networking, covering CNI plugins, service mesh, and network policies for enterprise deployments."
+    date: "2024-01-12T14:15:00Z"
+    author: "Bearman"
+    source: "Bearman.nl"
+    source_url: "https://bearman.nl/"
+    image: "https://via.placeholder.com/400x200/28a745/ffffff?text=K8s+Networking"
+    external: true
+
+  - title: "Infrastructure as Code Best Practices"
+    url: "https://wesleycamargo.github.io/posts/iac-best-practices"
+    description: "Essential best practices for Infrastructure as Code implementation, covering Terraform, Ansible, and GitOps workflows for scalable cloud infrastructure."
+    date: "2024-01-10T09:45:00Z"
+    author: "Wesley Camargo"
+    source: "Wesley Camargo"
+    source_url: "https://wesleycamargo.github.io/"
+    image: "https://via.placeholder.com/400x200/dc3545/ffffff?text=IaC+Best+Practices"
+    external: true
+
+  - title: "Serverless Architecture Patterns"
+    url: "https://www.devjev.nl/posts/serverless-patterns"
+    description: "Comprehensive overview of serverless architecture patterns using AWS Lambda, Azure Functions, and Google Cloud Functions for modern applications."
+    date: "2024-01-08T16:20:00Z"
+    author: "DevJev"
+    source: "DevJev.nl"
+    source_url: "https://www.devjev.nl/"
+    image: "https://via.placeholder.com/400x200/ffc107/000000?text=Serverless"
+    external: true
+
+  - title: "Container Security Fundamentals"
+    url: "https://bearman.nl/posts/container-security"
+    description: "Essential security practices for containerized applications, including image scanning, runtime protection, and compliance frameworks."
+    date: "2024-01-05T11:30:00Z"
+    author: "Bearman"
+    source: "Bearman.nl"
+    source_url: "https://bearman.nl/"
+    image: "https://via.placeholder.com/400x200/6f42c1/ffffff?text=Container+Security"
+    external: true
+
+  - title: "Multi-Cloud Strategy Implementation"
+    url: "https://wesleycamargo.github.io/posts/multi-cloud-strategy"
+    description: "Strategic approach to implementing multi-cloud architectures, covering vendor management, cost optimization, and operational complexity."
+    date: "2024-01-03T08:15:00Z"
+    author: "Wesley Camargo"
+    source: "Wesley Camargo"
+    source_url: "https://wesleycamargo.github.io/"
+    image: "https://via.placeholder.com/400x200/17a2b8/ffffff?text=Multi-Cloud"
+    external: true
