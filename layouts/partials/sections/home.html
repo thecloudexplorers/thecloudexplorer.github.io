@@ -1,0 +1,18 @@
+{{ $author:= site.Data.author }}
+{{ if (index site.Data site.Language.Lang).author }}
+  {{ $author = (index site.Data site.Language.Lang).author }}
+{{ end }}
+
+{{ $name:="Jane Doe" }}
+{{ if $author.nickname }}
+  {{ $name = $author.nickname }}
+{{ else if $author.name }}
+  {{ $name = $author.name }}
+{{ end }}
+
+{{ $sections:= site.Data.sections }}
+{{ if (index site.Data site.Language.Lang).sections }}
+  {{ $sections = (index site.Data site.Language.Lang).sections }}
+{{ end }}
+
+{{/* Blue hero section removed - page will start with content sections below */}}
