@@ -45,3 +45,4 @@ hugo.deb
 # Hugo binary
 hugo
 hugo_extended_*
+assets/jsconfig.json
