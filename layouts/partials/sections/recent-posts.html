@@ -1,0 +1,69 @@
+{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ if .section.id }}
+  {{ $sectionID = .section.id }}
+{{ end }}
+
+{{ $numShow := 3}}
+{{ if .section.numShow }}
+  {{ $numShow = .section.numShow }}
+{{ end }}
+
+<div class="container-fluid anchor pb-5 recent-posts-section">
+  {{ if not (.section.hideTitle) }}
+    <h1 class="text-center">
+        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+  {{ else }}
+    <h1 class="text-center" style="display: none">
+        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+  {{ end }}
+  <div class="container">
+    <div class="row" id="recent-post-cards">
+      {{/* Get internal posts */}}
+      {{ $internalPosts := where (where site.RegularPages.ByDate.Reverse "Type" "posts" ) "Layout" "!=" "search" }}
+      
+      {{/* Get external posts from data */}}
+      {{ $externalPosts := slice }}
+      {{ if site.Data.external_posts }}
+        {{ range site.Data.external_posts.posts }}
+          {{ $externalPosts = $externalPosts | append . }}
+        {{ end }}
+      {{ end }}
+      
+      {{/* Combine and sort all posts by date */}}
+      {{ $allPosts := slice }}
+      
+      {{/* Add internal posts to the collection */}}
+      {{ range $internalPosts }}
+        {{ $post := dict "date" .Date "title" .Title "url" .RelPermalink "summary" .Summary "type" "internal" "page" . }}
+        {{ $allPosts = $allPosts | append $post }}
+      {{ end }}
+      
+      {{/* Add external posts to the collection */}}
+      {{ range $externalPosts }}
+        {{ $post := dict "date" (.date | time.AsTime) "title" .title "url" .url "summary" .summary "type" "external" "data" . }}
+        {{ $allPosts = $allPosts | append $post }}
+      {{ end }}
+      
+      {{/* Sort all posts by date (newest first) */}}
+      {{ $sortedPosts := sort $allPosts "date" "desc" }}
+      
+      {{/* Display the first $numShow posts */}}
+      {{ range first $numShow $sortedPosts }}
+        {{ if eq .type "internal" }}
+          {{ partial "cards/post.html" .page }}
+        {{ else }}
+          {{ partial "cards/external-post.html" .data }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+  {{ if (.section.showMoreButton) }}
+  <div class="container" style="
+  display: flex;
+  align-items: center;
+  justify-content: center;">
+    <a href="/posts/" title="Show More" class="float-end btn btn-outline-info btn-sm" >
+    {{ i18n "show_more"}}</a>
+  </div>
+  {{ end }}
+</div>

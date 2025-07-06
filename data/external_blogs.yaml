@@ -1,0 +1,22 @@
+# Configuration for external blogs to aggregate
+blogs:
+  - name: "DevJev"
+    url: "https://www.devjev.nl/"
+    enabled: true
+    description: "DevJev's technical blog on DevOps, Cloud, and Software Development"
+    
+  - name: "Bearman"
+    url: "https://bearman.nl/"
+    enabled: true
+    description: "Bearman's insights on cloud computing and technology"
+    
+  - name: "Wesley Camargo"
+    url: "https://wesleycamargo.github.io/"
+    enabled: true
+    description: "Wesley Camargo's blog on cloud technologies and development"
+
+# Settings for external post aggregation
+settings:
+  max_posts_per_blog: 5
+  update_frequency: "daily"
+  cache_duration: "1h"
