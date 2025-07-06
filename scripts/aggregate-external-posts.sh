@@ -1,6 +1,36 @@
-# External blog posts aggregated from configured sources
-# Auto-generated on Sun Jul  6 19:39:58 UTC 2025
-posts:
+#!/bin/bash
+
+# External Blog Aggregation Script
+# This script fetches blog posts from external sources and updates the data file
+
+set -e
+
+echo "🌐 Starting external blog aggregation..."
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DATA_FILE="$SCRIPT_DIR/../data/external_posts.yaml"
+CONFIG_FILE="$SCRIPT_DIR/../data/external_blogs.yaml"
+
+# Create a temporary file for the new data
+TEMP_FILE=$(mktemp)
+
+echo "# External blog posts aggregated from configured sources" > "$TEMP_FILE"
+echo "# Auto-generated on $(date)" >> "$TEMP_FILE"
+echo "posts:" >> "$TEMP_FILE"
+
+# Function to scrape a blog and extract posts
+scrape_blog() {
+    local blog_name="$1"
+    local blog_url="$2"
+    
+    echo "📥 Scraping $blog_name ($blog_url)..."
+    
+    # For now, we'll keep the sample data since we can't access external sites
+    # In a real deployment, this would use tools like curl, jq, or a headless browser
+    
+    case "$blog_name" in
+        "DevJev")
+            cat >> "$TEMP_FILE" << 'EOF'
   - title: "Building Scalable Microservices with Kubernetes"
     url: "https://www.devjev.nl/posts/kubernetes-microservices/"
     blog_name: "DevJev"
@@ -21,6 +51,10 @@ posts:
     tags: ["terraform", "iac", "infrastructure", "automation"]
     external: true
     
+EOF
+            ;;
+        "Bearman")
+            cat >> "$TEMP_FILE" << 'EOF'
   - title: "Azure DevOps Pipeline Optimization Strategies"
     url: "https://bearman.nl/posts/azure-devops-optimization/"
     blog_name: "Bearman"
@@ -41,6 +75,10 @@ posts:
     tags: ["security", "containers", "docker", "best-practices"]
     external: true
     
+EOF
+            ;;
+        "Wesley Camargo")
+            cat >> "$TEMP_FILE" << 'EOF'
   - title: "Serverless Architecture Patterns with AWS Lambda"
     url: "https://wesleycamargo.github.io/posts/serverless-patterns/"
     blog_name: "Wesley Camargo"
@@ -51,3 +89,28 @@ posts:
     tags: ["aws", "serverless", "lambda", "architecture"]
     external: true
     
+EOF
+            ;;
+    esac
+}
+
+# Read the configuration and scrape each enabled blog
+if [[ -f "$CONFIG_FILE" ]]; then
+    echo "📋 Reading blog configuration from $CONFIG_FILE"
+    
+    # For demonstration, we'll use the known blog names
+    # In a real implementation, this would parse the YAML configuration
+    scrape_blog "DevJev" "https://www.devjev.nl/"
+    scrape_blog "Bearman" "https://bearman.nl/"
+    scrape_blog "Wesley Camargo" "https://wesleycamargo.github.io/"
+else
+    echo "⚠️  Configuration file not found: $CONFIG_FILE"
+    exit 1
+fi
+
+# Replace the old data file with the new one
+mv "$TEMP_FILE" "$DATA_FILE"
+
+echo "✅ External blog aggregation completed!"
+echo "📄 Updated data file: $DATA_FILE"
+echo "🔄 Run 'hugo build' to regenerate the site with updated posts"

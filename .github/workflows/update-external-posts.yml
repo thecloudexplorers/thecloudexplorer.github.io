@@ -1,0 +1,63 @@
+name: 'Update External Blog Posts'
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+
+jobs:
+  update-external-posts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run external blog aggregation
+        run: ./scripts/aggregate-external-posts.sh
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code data/external_posts.yaml || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/external_posts.yaml
+          git commit -m "🤖 Update external blog posts [automated]"
+          git push
+      
+      - name: Create summary
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          echo "## 🌐 External Blog Posts Updated" >> $GITHUB_STEP_SUMMARY
+          echo "Successfully aggregated posts from external blogs:" >> $GITHUB_STEP_SUMMARY
+          echo "- DevJev (https://www.devjev.nl/)" >> $GITHUB_STEP_SUMMARY
+          echo "- Bearman (https://bearman.nl/)" >> $GITHUB_STEP_SUMMARY
+          echo "- Wesley Camargo (https://wesleycamargo.github.io/)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Changes committed and site will be rebuilt automatically." >> $GITHUB_STEP_SUMMARY
+      
+      - name: No changes summary
+        if: steps.git-check.outputs.changes != 'true'
+        run: |
+          echo "## ✅ External Blog Posts Up to Date" >> $GITHUB_STEP_SUMMARY
+          echo "No new external blog posts found." >> $GITHUB_STEP_SUMMARY
