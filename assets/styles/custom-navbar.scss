@@ -1,0 +1,118 @@
+/* Custom navbar styling to match Guidelines section background */
+.top-navbar {
+  background-color: #e2e8f0 !important; /* slate 200 - same as Guidelines section */
+  color: #1e293b !important; /* slate 800 - same as Guidelines heading color */
+}
+
+.top-navbar .navbar-brand {
+  color: #1e293b !important; /* slate 800 - dark text like Guidelines */
+}
+
+.top-navbar li a {
+  color: #1e293b !important; /* slate 800 - dark text like Guidelines */
+}
+
+/* Fix active and hover states to use consistent dark colors */
+.top-navbar .navbar-nav .active {
+  color: #1e293b !important; /* Keep same dark color */
+  border-bottom: 2px solid #1e293b !important; /* Dark underline */
+  background: rgba(30, 41, 59, 0.1) !important; /* Subtle dark background */
+}
+
+.top-navbar li a:hover {
+  color: #1e293b !important; /* Keep same dark color on hover */
+  border-bottom: 2px solid #1e293b !important; /* Dark underline */
+  background: rgba(30, 41, 59, 0.1) !important; /* Subtle dark background */
+}
+
+/* Icon styling for light theme - exact color match */
+.top-navbar img.theme-icon {
+  filter: invert(0.12) sepia(0.35) saturate(3.5) hue-rotate(180deg) brightness(0.9) !important; /* Exact #1e293b match */
+}
+
+.top-navbar .sidebar-icon {
+  filter: invert(0.12) sepia(0.35) saturate(3.5) hue-rotate(180deg) brightness(0.9) !important; /* Exact #1e293b match */
+}
+
+.top-navbar .feather-menu,
+.top-navbar .feather-sidebar {
+  stroke: #1e293b !important; /* Exact same color as text */
+}
+
+/* Override transparent navbar state */
+.top-navbar.transparent-navbar {
+  background-color: #e2e8f0 !important; /* Keep same color even when transparent */
+}
+
+.top-navbar.transparent-navbar .navbar-brand {
+  color: #1e293b !important; /* Use dark text instead of light */
+}
+
+.top-navbar.transparent-navbar li a {
+  color: #1e293b !important; /* Use dark text instead of light */
+}
+
+.top-navbar.transparent-navbar img.theme-icon {
+  filter: invert(0.12) sepia(0.35) saturate(3.5) hue-rotate(180deg) brightness(0.9) !important; /* Exact #1e293b match */
+}
+
+.top-navbar.transparent-navbar .sidebar-icon {
+  filter: invert(0.12) sepia(0.35) saturate(3.5) hue-rotate(180deg) brightness(0.9) !important; /* Exact #1e293b match */
+}
+
+.top-navbar.transparent-navbar .feather-menu,
+.top-navbar.transparent-navbar .feather-sidebar {
+  stroke: #1e293b !important; /* Exact same color as text */
+}
+
+/* Dark theme override */
+[data-theme="dark"] .top-navbar {
+  background-color: #374151 !important; /* gray 700 for dark theme consistency */
+  color: #f1f5f9 !important; /* slate 100 - light text for dark theme */
+}
+
+[data-theme="dark"] .top-navbar .navbar-brand {
+  color: #f1f5f9 !important; /* slate 100 - light text for dark theme */
+}
+
+[data-theme="dark"] .top-navbar li a {
+  color: #f1f5f9 !important; /* slate 100 - light text for dark theme */
+}
+
+[data-theme="dark"] .top-navbar img.theme-icon {
+  filter: invert(0.9) !important; /* Light icon for dark theme */
+}
+
+[data-theme="dark"] .top-navbar .sidebar-icon {
+  filter: invert(0.9) !important; /* Light icon for dark theme */
+}
+
+[data-theme="dark"] .top-navbar .feather-menu,
+[data-theme="dark"] .top-navbar .feather-sidebar {
+  stroke: #f1f5f9 !important; /* Light stroke for dark theme */
+}
+
+[data-theme="dark"] .top-navbar.transparent-navbar {
+  background-color: #374151 !important; /* Keep same color even when transparent in dark mode */
+}
+
+[data-theme="dark"] .top-navbar.transparent-navbar .navbar-brand {
+  color: #f1f5f9 !important; /* light text for dark theme */
+}
+
+[data-theme="dark"] .top-navbar.transparent-navbar li a {
+  color: #f1f5f9 !important; /* light text for dark theme */
+}
+
+[data-theme="dark"] .top-navbar.transparent-navbar img.theme-icon {
+  filter: invert(0.9) !important; /* Light icon for dark theme transparent */
+}
+
+[data-theme="dark"] .top-navbar.transparent-navbar .sidebar-icon {
+  filter: invert(0.9) !important; /* Light icon for dark theme transparent */
+}
+
+[data-theme="dark"] .top-navbar.transparent-navbar .feather-menu,
+[data-theme="dark"] .top-navbar.transparent-navbar .feather-sidebar {
+  stroke: #f1f5f9 !important; /* Light stroke for dark theme transparent */
+}
