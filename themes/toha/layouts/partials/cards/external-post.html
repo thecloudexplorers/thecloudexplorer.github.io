@@ -1,0 +1,54 @@
+{{/* 
+  External Post Card Template
+  Used for displaying aggregated external blog posts
+  Expects external post data structure
+*/}}
+
+<div class="post-card external-post-card">
+  <div class="card">
+    <div class="card-head">
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="post-card-link">
+        {{ if .image }}
+          <img class="card-img-top" src="{{ .image }}" alt="External Post Image" onerror="this.style.display='none'">
+        {{ else }}
+          <div class="card-img-top placeholder-img d-flex align-items-center justify-content-center bg-light">
+            <i class="fas fa-external-link-alt text-muted"></i>
+          </div>
+        {{ end }}
+      </a>
+      {{/* External post indicator */}}
+      <div class="external-badge">
+        <span class="badge bg-info">
+          <i class="fas fa-external-link-alt me-1"></i>{{ .source }}
+        </span>
+      </div>
+    </div>
+    <div class="card-body">
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="post-card-link">
+        <h5 class="card-title">{{ .title }}</h5>
+        <p class="card-text post-summary">{{ .description | plainify | truncate 150 }}</p>
+      </a>
+      {{/* External source info */}}
+      <div class="external-source">
+        <small class="text-muted">
+          <i class="fas fa-user me-1"></i>{{ .author }}
+          {{ if .source_url }}
+            • <a href="{{ .source_url }}" target="_blank" rel="noopener noreferrer">{{ .source }}</a>
+          {{ else }}
+            • {{ .source }}
+          {{ end }}
+        </small>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span class="float-start">
+        {{ if .date }}
+          {{ .date | time.Format ":date_full" }}
+        {{ end }}
+      </span>
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="float-end btn btn-outline-info btn-sm">
+        {{ i18n "read" }} <i class="fas fa-external-link-alt ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>

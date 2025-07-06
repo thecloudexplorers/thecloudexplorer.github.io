@@ -1,0 +1,78 @@
+/* External Post Cards Styling */
+.external-post-card {
+  position: relative;
+}
+
+.external-post-card .card {
+  border: 2px solid #e3f2fd;
+  background: linear-gradient(135deg, #f8fcff 0%, #e3f2fd 100%);
+}
+
+.external-post-card .card:hover {
+  border-color: #2196f3;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.external-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.external-badge .badge {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.5rem;
+}
+
+.external-post-card .placeholder-img {
+  height: 200px;
+  font-size: 3rem;
+}
+
+.external-source {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.external-source a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.external-source a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .external-post-card .card {
+  border-color: #1e3a8a;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+[data-theme="dark"] .external-post-card .card:hover {
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .external-post-card .placeholder-img {
+  background-color: #374151 !important;
+}
+
+[data-theme="dark"] .external-source {
+  border-top-color: #374151;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .external-badge {
+    top: 5px;
+    right: 5px;
+  }
+  
+  .external-badge .badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.375rem;
+  }
+}

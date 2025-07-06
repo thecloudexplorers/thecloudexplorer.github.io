@@ -1,0 +1,34 @@
+---
+# External blog RSS feeds configuration
+# Note: RSS feed URLs should be verified in production environment
+feeds:
+  - name: "DevJev.nl"
+    url: "https://www.devjev.nl/"
+    rss_url: "https://www.devjev.nl/feed.xml"  # Try also: /rss.xml, /index.xml
+    author: "DevJev"
+    favicon: ""
+    
+  - name: "Bearman.nl"
+    url: "https://bearman.nl/"
+    rss_url: "https://bearman.nl/feed.xml"  # Try also: /rss.xml, /index.xml
+    author: "Bearman"
+    favicon: ""
+    
+  - name: "Wesley Camargo"
+    url: "https://wesleycamargo.github.io/"
+    rss_url: "https://wesleycamargo.github.io/feed.xml"  # Try also: /rss.xml, /index.xml
+    author: "Wesley Camargo"
+    favicon: ""
+
+# Configuration for RSS aggregation
+config:
+  max_posts_per_feed: 5
+  cache_duration: "1h"
+  enable_aggregation: true
+
+# RSS Feed URL Discovery Notes:
+# Common RSS feed paths to try:
+# - /feed.xml, /rss.xml, /index.xml
+# - /feed/, /rss/, /atom.xml
+# - /feeds/all.atom.xml
+# - Check HTML <link> tags: <link rel="alternate" type="application/rss+xml" href="/feed.xml">
