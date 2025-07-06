@@ -1,6 +1,6 @@
 # section information
 section:
-  name: Projects
+  name: Guidelines
   id: projects
   enable: true
   weight: 3
@@ -10,53 +10,38 @@ section:
 
 # filter buttons
 buttons:
-- name: All
-  filter: "all"
-- name: Cloud Architecture
-  filter: "cloud"
-- name: DevOps
-  filter: "devops" 
-- name: Best Practices
-  filter: "best-practices"
+  - name: All
+    filter: "all"
+  - name: Architecture
+    filter: "best-practices"
+  - name: Cloud
+    filter: "cloud"
+  - name: DevOps
+    filter: "devops"
 
 # your projects
 projects:
-- name: DevOps Well-Architected Guide
-  logo: /images/sections/projects/devops.png
-  role: Community Initiative
-  timeline: "Ongoing"
-  url: "#"
-  summary: Comprehensive framework for implementing DevOps practices with cloud-native architectures, covering automation, continuous integration, and deployment strategies.
-  tags: ["devops", "automation", "ci-cd", "cloud-native"]
+  - name: DevOps Well-Architected Guide
+    logo: /images/sections/projects/devops.png
+    role: Community Initiative
+    timeline: "Ongoing"
+    url: "#"
+    summary: Comprehensive framework for implementing DevOps practices with cloud-native architectures, covering automation, continuous integration, and deployment strategies.
+    tags: ["devops", "automation", "ci-cd", "cloud-native", "architecture"]
 
-- name: Cloud Center of Excellence
-  logo: /images/sections/projects/coe.png
-  role: Framework Development
-  timeline: "Ongoing"
-  url: "#"
-  summary: Establishing governance, standards, and best practices for enterprise cloud adoption. Creating a centralized hub for cloud expertise and knowledge sharing.
-  tags: ["cloud", "governance", "best-practices", "enterprise"]
+  - name: Cloud Center of Excellence
+    logo: /images/sections/projects/coe.png
+    role: Framework Development
+    timeline: "Ongoing"
+    url: "#"
+    summary: Establishing governance, standards, and best practices for enterprise cloud adoption. Creating a centralized hub for cloud expertise and knowledge sharing.
+    tags:
+      ["cloud", "governance", "best-practices", "enterprise", "architecture"]
 
-- name: Sovereign Cloud Guide
-  logo: /images/sections/projects/sovereign.png
-  role: Research & Documentation
-  timeline: "Ongoing"
-  url: "#"
-  summary: Understanding data sovereignty, regulatory compliance, and national cloud strategies. Implementing cloud solutions that meet local data residency and security requirements.
-  tags: ["cloud", "compliance", "security", "governance"]
-
-- name: Multi-Cloud Strategy Framework
-  logo: /images/sections/projects/multicloud.png
-  role: Architecture Guide
-  timeline: "Ongoing"
-  url: "#"
-  summary: Approaches for leveraging multiple cloud providers, avoiding vendor lock-in, and implementing hybrid cloud architectures effectively.
-  tags: ["cloud", "architecture", "best-practices", "strategy"]
-
-- name: Cloud Cost Optimization Toolkit
-  logo: /images/sections/projects/cost.png
-  role: Tools & Resources
-  timeline: "Ongoing"
-  url: "#"
-  summary: Strategies for managing and reducing cloud costs, including automated cost monitoring, resource optimization, and financial operations best practices.
-  tags: ["cloud", "cost-optimization", "finops", "best-practices"]
+  - name: Sovereign Cloud Guide
+    logo: /images/sections/projects/sovereign.png
+    role: Research & Documentation
+    timeline: "Ongoing"
+    url: "#"
+    summary: Understanding data sovereignty, regulatory compliance, and national cloud strategies. Implementing cloud solutions that meet local data residency and security requirements.
+    tags: ["cloud", "compliance", "security", "governance", "architecture"]

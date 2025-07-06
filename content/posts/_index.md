@@ -2,10 +2,6 @@
 title: "Blog"
 date: 2025-07-06
 type: blog
-menu:
-  main:
-    name: "Blog"
-    weight: 4
 ---
 
 # Latest Cloud Insights
